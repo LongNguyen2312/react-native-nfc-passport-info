@@ -2,23 +2,23 @@
   "name": "react-native-read-nfc-passport",
   "version": "0.1.0",
   "description": "Read data from NFC passport",
-  "source": "./src/index.tsx",
-  "main": "./lib/commonjs/index.js",
-  "module": "./lib/module/index.js",
+  "source": "./src/index.ts",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "types": "./types/react-native-read-nfc-passport.d.ts",
   "exports": {
     ".": {
       "types": "./types/react-native-read-nfc-passport.d.ts",
-      "import": "./lib/module/index.js",
-      "require": "./lib/commonjs/index.js"
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
     }
   },
   "files": [
     "src",
-    "lib",
     "android",
     "ios",
-    "cpp",
+    "images",
+    "types",
     "*.podspec",
     "!ios/build",
     "!android/build",
