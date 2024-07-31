@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
   s.license      = package["license"]
   s.authors      = package["author"]
 
-  s.platforms    = { :ios => "14.0" }
+  s.platforms    = { :ios => "13.0" }
   s.source       = { :git => "https://github.com/LongNguyen2312/react-native-read-nfc-passport.git", :tag => "#{s.version}" }
-  s.ios.deployment_target = "14.0"
+  s.ios.deployment_target = "13.0"
   s.swift_version = "5.0"
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
