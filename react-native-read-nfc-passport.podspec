@@ -11,8 +11,10 @@ Pod::Spec.new do |s|
   s.license      = package["license"]
   s.authors      = package["author"]
 
-  s.platforms    = { :ios => min_ios_version_supported }
+  s.platforms    = { :ios => "14.0" }
   s.source       = { :git => "https://github.com/LongNguyen2312/react-native-read-nfc-passport.git", :tag => "#{s.version}" }
+  s.ios.deployment_target = "14.0"
+  s.swift_version = "5.0"
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
@@ -22,6 +24,8 @@ Pod::Spec.new do |s|
     install_modules_dependencies(s)
   else
     s.dependency "React-Core"
+    s.dependency "OpenSSL-Universal", '1.1.1900'
+    s.dependency "NFCPassportReader", '1.1.9'
 
     # Don't install the dependencies when we run `pod install` in the old architecture.
     if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then

@@ -43,7 +43,13 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "NFC CCCD",
+    "CCCD",
+    "Passport",
+    "Passport Reader",
+    "NFCPassportReader",
+    "CCCD Viet Nam"
   ],
   "repository": {
     "type": "git",
