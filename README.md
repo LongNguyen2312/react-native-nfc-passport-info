@@ -53,9 +53,13 @@ If this is the first time you toggle the capabilities, the Xcode will generate a
 
 More info on Apple's [doc](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_nfc_readersession_formats?language=objc)
 
-5. in Xcode, install Package Dependencies NFCPassportReader (Use version 1.1.9)
+5. in Project Xcode, install Package Dependencies NFCPassportReader (Use version 1.1.9)
 
 ![package dependencies](./images/package-dependencies.png "package dependencies")
+
+Add (+) NFCPassportReader in `TARGETS` => `Build phases` => `Link Binary With Libraries`
+
+![link binary](./images/link-binary.png "link binary")
 
 ### Android
 
