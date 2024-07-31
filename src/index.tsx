@@ -17,6 +17,45 @@ const ReadNfcPassport = NativeModules.ReadNfcPassport
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return ReadNfcPassport.multiply(a, b);
-}
+    const DATE_REGEX = /^\d{6}$/;
+    
+    export function scanNfcAndroid({
+      documentNumber,
+      dateOfBirth,
+      dateOfExpiry,
+      quality = 1,
+    }: any) {
+      assert(
+        typeof documentNumber === "string",
+        'expected string "documentNumber"'
+      );
+      assert(
+        isDate(dateOfBirth),
+        'expected string "dateOfBirth" in format "yyMMdd"'
+      );
+      assert(
+        isDate(dateOfExpiry),
+        'expected string "dateOfExpiry" in format "yyMMdd"'
+      );
+      return ReadNfcPassport?.scan({
+        documentNumber,
+        dateOfBirth,
+        dateOfExpiry,
+        quality,
+      });
+    }
+    
+    export function cancelScanNfcAndroid() {
+      return ReadNfcPassport?.cancel();
+    }
+    
+    function assert(statement: any, err: any) {
+      if (!statement) {
+        throw new Error(err || "Assertion failed");
+      }
+    }
+    
+    function isDate(str: string) {
+      return typeof str === "string" && DATE_REGEX.test(str);
+    }
+    

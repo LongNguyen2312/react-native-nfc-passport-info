@@ -1,30 +1,53 @@
-import { useState, useEffect } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-read-nfc-passport';
+import * as React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  scanNfcAndroid,
+  cancelScanNfcAndroid,
+} from 'react-native-read-nfc-passport';
 
-export default function App() {
-  const [result, setResult] = useState<number | undefined>();
+// documentNumber: Last 9 digits of cccd
+// dateOfBirth: yymmdd
+// dateOfExpiry: yymmdd
 
-  useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+const readNfc = async () => {
+  try {
+    const data = await scanNfcAndroid({
+      documentNumber: 'xxxxxxxxx',
+      dateOfBirth: 'xxxxxx',
+      dateOfExpiry: 'xxxxxx',
+    });
+    console.log('readPassport', data);
+  } catch (error) {
+    try {
+      await cancelScanNfcAndroid();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+};
 
+// create a component
+const App: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <TouchableOpacity onPress={readNfc}>
+        <Text style={styles.txt}>Read NFC</Text>
+      </TouchableOpacity>
     </View>
   );
-}
+};
 
+// define your styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#2c3e50',
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+  txt: {
+    color: 'white',
   },
 });
+
+export default App;
