@@ -63,15 +63,16 @@ export function cancelScanNfc() {
   ReadNfcPassport?.cancel();
 }
 
-function scanNfcIos({ documentNumber, dateOfBirth, dateOfExpiry }: any) {
-  const mrzKeyTemp = getMRZKey(documentNumber, dateOfBirth, dateOfExpiry);
-  ReadNfcPassport?.readPassport?.(mrzKeyTemp, {})
-    .then(async (msg: any) => {
-      return msg;
-    })
-    .catch((err: any) => {
-      throw err;
+async function scanNfcIos({ documentNumber, dateOfBirth, dateOfExpiry }: any) {
+  try {
+    const mrzKeyTemp = getMRZKey(documentNumber, dateOfBirth, dateOfExpiry);
+    const res = await ReadNfcPassport?.readPassport?.(mrzKeyTemp, {
+      requestPresentPassport: 'Hold your phone near an NFC enabled ID card',
     });
+    return res;
+  } catch (error) {
+    throw error;
+  }
 }
 
 function assert(statement: any, err: any) {
