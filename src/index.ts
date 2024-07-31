@@ -20,63 +20,57 @@ const ReadNfcPassport = NativeModules.ReadNfcPassport
 
 const DATE_REGEX = /^\d{6}$/;
 
-// documentNumber: Last 9 digits of cccd
-// dateOfBirth: yymmdd
-// dateOfExpiry: yymmdd
-export function scanNfcAndroid({
+export function scanNfc({ documentNumber, dateOfBirth, dateOfExpiry }: any) {
+  assert(
+    typeof documentNumber === 'string',
+    'expected string "documentNumber"'
+  );
+  assert(
+    isDate(dateOfBirth),
+    'expected string "dateOfBirth" in format "yyMMdd"'
+  );
+  assert(
+    isDate(dateOfExpiry),
+    'expected string "dateOfExpiry" in format "yyMMdd"'
+  );
+
+  return Platform?.OS === 'ios'
+    ? scanNfcIos({ documentNumber, dateOfBirth, dateOfExpiry })
+    : scanNfcAndroid({ documentNumber, dateOfBirth, dateOfExpiry });
+}
+
+async function scanNfcAndroid({
   documentNumber,
   dateOfBirth,
   dateOfExpiry,
   quality = 1,
 }: any) {
-  assert(
-    typeof documentNumber === 'string',
-    'expected string "documentNumber"'
-  );
-  assert(
-    isDate(dateOfBirth),
-    'expected string "dateOfBirth" in format "yyMMdd"'
-  );
-  assert(
-    isDate(dateOfExpiry),
-    'expected string "dateOfExpiry" in format "yyMMdd"'
-  );
-  return ReadNfcPassport?.scan({
-    documentNumber,
-    dateOfBirth,
-    dateOfExpiry,
-    quality,
-  });
+  try {
+    const res = await ReadNfcPassport?.scan({
+      documentNumber,
+      dateOfBirth,
+      dateOfExpiry,
+      quality,
+    });
+    return res;
+  } catch (error) {
+    cancelScanNfc();
+    throw error;
+  }
 }
 
-export function cancelScanNfcAndroid() {
-  return ReadNfcPassport?.cancel();
+export function cancelScanNfc() {
+  ReadNfcPassport?.cancel();
 }
 
-// documentNumber: Last 9 digits of cccd
-// dateOfBirth: yymmdd
-// dateOfExpiry: yymmdd
-export function scanNfcIos({ documentNumber, dateOfBirth, dateOfExpiry }: any) {
-  assert(
-    typeof documentNumber === 'string',
-    'expected string "documentNumber"'
-  );
-  assert(
-    isDate(dateOfBirth),
-    'expected string "dateOfBirth" in format "yyMMdd"'
-  );
-  assert(
-    isDate(dateOfExpiry),
-    'expected string "dateOfExpiry" in format "yyMMdd"'
-  );
-
+function scanNfcIos({ documentNumber, dateOfBirth, dateOfExpiry }: any) {
   const mrzKeyTemp = getMRZKey(documentNumber, dateOfBirth, dateOfExpiry);
   ReadNfcPassport?.readPassport?.(mrzKeyTemp, {})
     .then(async (msg: any) => {
-      console.log('scanNfcIos', msg);
+      return msg;
     })
     .catch((err: any) => {
-      console.log('scanNfcIos err', err);
+      throw err;
     });
 }
 

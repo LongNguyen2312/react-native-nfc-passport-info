@@ -53,14 +53,6 @@ If this is the first time you toggle the capabilities, the Xcode will generate a
 
 More info on Apple's [doc](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_nfc_readersession_formats?language=objc)
 
-5. in Project Xcode, install Package Dependencies NFCPassportReader (Use version 1.1.9)
-
-![package dependencies](./images/package-dependencies.png "package dependencies")
-
-Add (+) NFCPassportReader in `TARGETS` => `Build phases` => `Link Binary With Libraries`
-
-![link binary](./images/link-binary.png "link binary")
-
 ### Android
 
 Simple add `uses-permission` into your `AndroidManifest.xml`:
@@ -71,10 +63,8 @@ Simple add `uses-permission` into your `AndroidManifest.xml`:
 
 ## Usage
 
-### Android
-
 ```js
-import { scanNfcAndroid, cancelScanNfcAndroid } from 'react-native-read-nfc-passport';
+import { scanNfc } from 'react-native-read-nfc-passport';
 
 // documentNumber: Last 9 digits of cccd
 // dateOfBirth: yymmdd
@@ -82,41 +72,14 @@ import { scanNfcAndroid, cancelScanNfcAndroid } from 'react-native-read-nfc-pass
 
 const onReadNfc = async () => {
   try {
-    const data = await scanNfcAndroid({
+    const data = await scanNfc({
       documentNumber: 'xxxxxxxxx',
       dateOfBirth: 'xxxxxx',
       dateOfExpiry: 'xxxxxx',
     });
-    console.log('readPassport', data);
+    console.log('onReadNfc', data);
   } catch (error) {
-    try {
-      await cancelScanNfcAndroid();
-    } catch (err) {
-      console.log(err);
-    }
-  }
-};
-```
-
-### IOS
-
-```js
-import { scanNfcIos } from 'react-native-read-nfc-passport';
-
-// documentNumber: Last 9 digits of cccd
-// dateOfBirth: yymmdd
-// dateOfExpiry: yymmdd
-
-const onReadNfc = async () => {
-  try {
-    const data = await scanNfcIos({
-      documentNumber: 'xxxxxxxxx',
-      dateOfBirth: 'xxxxxx',
-      dateOfExpiry: 'xxxxxx',
-    });
-    console.log('readPassport', data);
-  } catch (error) {
-      console.log(error);
+    console.log(err);
   }
 };
 ```

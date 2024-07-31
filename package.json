@@ -41,6 +41,8 @@
     "react-native",
     "ios",
     "android",
+    "react-native-passport-reader",
+    "react-native-read -nfc-passport",
     "NFC CCCD",
     "CCCD",
     "Passport",
