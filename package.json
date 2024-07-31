@@ -5,10 +5,10 @@
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
-  "types": "./lib/typescript/src/index.d.ts",
+  "types": "./types/react-native-read-nfc-passport.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/typescript/src/index.d.ts",
+      "types": "./types/react-native-read-nfc-passport.d.ts",
       "import": "./lib/module/index.js",
       "require": "./lib/commonjs/index.js"
     }
