@@ -938,7 +938,7 @@ PODS:
   - React-Mapbuffer (0.74.4):
     - glog
     - React-debug
-  - react-native-read-nfc-passport (0.1.0):
+  - react-native-read-nfc-passport (1.0.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1403,7 +1403,7 @@ SPEC CHECKSUMS:
   React-jsitracing: 4e9c99e73a6269b27b0d4cbab277dd90df3e5ac0
   React-logger: fbfb50e2a2b1b46ee087f0a52739fadecc5e81a4
   React-Mapbuffer: d39610dff659d8cf1fea485abae08bbf6f9c8279
-  react-native-read-nfc-passport: 16d25db050632e9b1eba60ed505cd6f0118a2c27
+  react-native-read-nfc-passport: c14a21cc3f919827fe791874b88cb560670b3ec7
   React-nativeconfig: 2be4363c2c4ac2b42419577774e83e4e4fd2af9f
   React-NativeModulesApple: 453ada38f826a508e48872c7a7877c431af48bba
   React-perflogger: 9745f800ab4d12ec4325bde7bd090eafb87c5570
