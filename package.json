@@ -1,6 +1,6 @@
 {
   "name": "react-native-read-nfc-passport",
-  "version": "1.0.0",
+  "version": "0.1.2",
   "description": "Read data from NFC passport",
   "source": "./src/index.ts",
   "main": "./src/index.ts",
