@@ -53,6 +53,15 @@ If this is the first time you toggle the capabilities, the Xcode will generate a
 
 More info on Apple's [doc](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_nfc_readersession_formats?language=objc)
 
+5. PassiveAuthentication
+Add file masterList.pem to `Project`
+
+Passive Authentication is now part of the main library and can be used to ensure that an E-Passport is valid and hasn't been tampered with.
+
+It requires a set of CSCA certificates in PEM format from a master list (either from a country that publishes their master list, or the ICAO PKD repository). See the scripts folder for details on how to get and create this file.
+
+**The masterList.pem file included in the Sample app is purely there to ensure no compiler warnings and contains only a single PEM file that was self-generated and won't be able to verify anything!**
+
 ### Android
 
 Simple add `uses-permission` into your `AndroidManifest.xml`:
@@ -83,6 +92,9 @@ const onReadNfc = async () => {
   }
 };
 ```
+
+## Sample app
+There is a sample app included in the repo which demonstrates the functionality.
 
 ## License
 

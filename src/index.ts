@@ -20,7 +20,11 @@ const ReadNfcPassport = NativeModules.ReadNfcPassport
 
 const DATE_REGEX = /^\d{6}$/;
 
-export function scanNfc({ documentNumber, dateOfBirth, dateOfExpiry }: any) {
+export async function scanNfc({
+  documentNumber,
+  dateOfBirth,
+  dateOfExpiry,
+}: any) {
   assert(
     typeof documentNumber === 'string',
     'expected string "documentNumber"'
@@ -64,15 +68,18 @@ export function cancelScanNfc() {
 }
 
 async function scanNfcIos({ documentNumber, dateOfBirth, dateOfExpiry }: any) {
-  try {
+  return new Promise((resolve, reject) => {
     const mrzKeyTemp = getMRZKey(documentNumber, dateOfBirth, dateOfExpiry);
-    const res = await ReadNfcPassport?.readPassport?.(mrzKeyTemp, {
+    ReadNfcPassport.readPassport(mrzKeyTemp, {
       requestPresentPassport: 'Hold your phone near an NFC enabled ID card',
-    });
-    return res;
-  } catch (error) {
-    throw error;
-  }
+    })
+      .then((data: any) => {
+        resolve(data);
+      })
+      .catch((error: any) => {
+        reject(error);
+      });
+  });
 }
 
 function assert(statement: any, err: any) {
