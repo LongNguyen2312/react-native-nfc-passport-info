@@ -4,7 +4,7 @@ package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32'
 
 Pod::Spec.new do |s|
-  s.name         = "react-native-read-nfc-passport"
+  s.name         = "react-native-nfc-passport-info"
   s.version      = package["version"]
   s.summary      = package["description"]
   s.homepage     = package["homepage"]
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.authors      = package["author"]
 
   s.platforms    = { :ios => "13.0" }
-  s.source       = { :git => "https://github.com/LongNguyen2312/react-native-read-nfc-passport.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/LongNguyen2312/react-native-nfc-passport-info.git", :tag => "#{s.version}" }
   s.ios.deployment_target = "13.0"
   s.swift_version = "5.0"
 

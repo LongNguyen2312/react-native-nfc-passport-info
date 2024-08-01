@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {scanNfc} from 'react-native-read-nfc-passport';
+import {scanNfc} from 'react-native-nfc-passport-info';
 
 let called = false;
 

@@ -1,4 +1,4 @@
-declare module 'react-native-read-nfc-passport' {
+declare module 'react-native-nfc-passport-info' {
   // documentNumber: Last 9 digits of CCCD
   // dateOfBirth: yymmdd
   // dateOfExpiry: yymmdd

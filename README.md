@@ -1,15 +1,15 @@
-# react-native-read-nfc-passport
+# react-native-nfc-passport-info
 
 Read data from NFC passport, Vietnam CCCD for iOS and Android, reference from `NFCPassportReader` and `jmrtd`
 
 ## Installation
 
 ```sh
-npm install react-native-read-nfc-passport
+npm install react-native-nfc-passport-info
 ```
 
 ```sh
-yarn add react-native-read-nfc-passport
+yarn add react-native-nfc-passport-info
 ```
 
 ## Configuration
@@ -73,7 +73,7 @@ Simple add `uses-permission` into your `AndroidManifest.xml`:
 ## Usage
 
 ```js
-import { scanNfc } from 'react-native-read-nfc-passport';
+import { scanNfc } from 'react-native-nfc-passport-info';
 
 // documentNumber: Last 9 digits of cccd
 // dateOfBirth: yymmdd

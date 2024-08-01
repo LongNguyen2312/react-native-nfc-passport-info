@@ -1,14 +1,14 @@
 {
-  "name": "react-native-read-nfc-passport",
-  "version": "0.1.2",
+  "name": "react-native-nfc-passport-info",
+  "version": "1.0.0",
   "description": "Read data from NFC passport",
   "source": "./src/index.ts",
   "main": "./src/index.ts",
   "module": "./src/index.ts",
-  "types": "./types/react-native-read-nfc-passport.d.ts",
+  "types": "./types/react-native-nfc-passport-info.d.ts",
   "exports": {
     ".": {
-      "types": "./types/react-native-read-nfc-passport.d.ts",
+      "types": "./types/react-native-nfc-passport-info.d.ts",
       "import": "./src/index.ts",
       "require": "./src/index.ts"
     }
@@ -42,24 +42,26 @@
     "ios",
     "android",
     "react-native-passport-reader",
-    "react-native-read -nfc-passport",
+    "VNCardNFC",
     "NFC CCCD",
     "CCCD",
     "Passport",
     "Passport Reader",
     "NFCPassportReader",
-    "CCCD Viet Nam"
+    "CCCD Viet Nam",
+    "react-native-nfc-passport-info",
+    "VietIDScanner"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LongNguyen2312/react-native-read-nfc-passport.git"
+    "url": "git+https://github.com/LongNguyen2312/react-native-nfc-passport-info.git"
   },
   "author": "Long nguyen <longnv.main@gmail.com> (https://github.com/LongNguyen2312)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LongNguyen2312/react-native-read-nfc-passport/issues"
+    "url": "https://github.com/LongNguyen2312/react-native-nfc-passport-info/issues"
   },
-  "homepage": "https://github.com/LongNguyen2312/react-native-read-nfc-passport#readme",
+  "homepage": "https://github.com/LongNguyen2312/react-native-nfc-passport-info#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-read-nfc-passport": ["./src/index"]
+      "react-native-nfc-passport-info": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
