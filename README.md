@@ -12,6 +12,47 @@ npm install react-native-nfc-passport-info
 yarn add react-native-nfc-passport-info
 ```
 
+## Linking
+
+### Autolink
+
+The library has autolink support
+
+### Manual link
+
+#### IOS
+
+Add to `Podfile`
+
+```
+  rn_nfc_path = '../node_modules/react-native-nfc-passport-info'
+  pod 'react-native-nfc-passport-info', :path => rn_nfc_path
+```
+
+#### Android
+
+Add to `setting.gradle`
+
+```
+  include ':react-native-nfc-passport-info'
+  project(':react-native-nfc-passport-info').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-nfc-passport-info/android')
+```
+
+Add to `app/build.gradle`
+
+```
+  implementation project(':react-native-nfc-passport-info')
+```
+
+Add to `MainApplication`
+
+```
+  import com.readnfcpassport.ReadNfcPassportPackage;
+
+  List<ReactPackage> packages = new PackageList(this).getPackages();
+  packages.add(new ReadNfcPassportPackage());
+```
+
 ## Configuration
 
 ### IOS
